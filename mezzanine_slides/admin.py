@@ -1,13 +1,16 @@
 from copy import deepcopy
-
+from django.conf import settings
 from django.contrib import admin
 
 from mezzanine.pages.models import RichTextPage
 
 from mezzanine.core.admin import TabularDynamicInlineAdmin
 from mezzanine.pages.admin import PageAdmin
-from mezzanine.forms.admin import FormAdmin
-from mezzanine.galleries.admin import GalleryAdmin
+
+if 0:
+    from mezzanine.forms.admin import FormAdmin
+    from mezzanine.galleries.admin import GalleryAdmin
+
 
 try:
     from cartridge.shop.models import Category
@@ -37,8 +40,9 @@ class RichTextPageAdmin(PageAdmin):
 admin.site.unregister(RichTextPage)
 admin.site.register(RichTextPage, RichTextPageAdmin)
 
-FormAdmin.inlines += (SlideInline,)
-GalleryAdmin.inlines += (SlideInline,)
+if 0:
+    FormAdmin.inlines += (SlideInline,)
+    GalleryAdmin.inlines += (SlideInline,)
 
 
 if cartridge:
